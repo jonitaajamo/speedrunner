@@ -1,6 +1,6 @@
 # Project spesifications
 
-In this project the main goal is to find shortest path on Dragon Age 2 map as fast as possible. 
+In this project the main goal is to find shortest path on Dragon Age 2 map as fast as possible using different search algorithms and compare their performance  
 I chose this topic because of my new found love for search algorithms and good availability for interesting data sets.
 
 ## Data structures and aglorithms used
