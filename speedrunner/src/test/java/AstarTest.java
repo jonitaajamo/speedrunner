@@ -35,7 +35,7 @@ public class AstarTest {
 
         this.astar = new Astar(map, new Node(1, 1), new Node(4, 4));
         this.astar.search();
-        
+
         assertFalse(this.astar.isGoalFound());
     }
 }
