@@ -9,6 +9,7 @@ public class Astar {
     private char[][] map;
     private Node start;
     private Node goal;
+    private boolean goalFound;
 
     /**
      * Astar constructor. Calculates the heuristic for start node.
@@ -20,6 +21,7 @@ public class Astar {
         this.map = map;
         this.start = start;
         this.goal = goal;
+        this.goalFound = false;
 
         start.calculateHeuristic(goal);
     }
@@ -38,6 +40,7 @@ public class Astar {
             Node currentNode = queue.poll();
             if(currentNode.equals(this.goal)) {
                 System.out.println("Goal found");
+                this.goalFound = true;
                 break;
             }
             List<Node> neighbors = getNeighbors(currentNode);
@@ -89,4 +92,7 @@ public class Astar {
         return Math.abs(x - this.goal.getX()) + Math.abs(y - this.goal.getY());
     }
 
+    public boolean isGoalFound() {
+        return this.goalFound;
+    }
 }
