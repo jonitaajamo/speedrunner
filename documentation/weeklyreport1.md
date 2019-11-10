@@ -20,3 +20,6 @@ should I just use CLI at first and maybe graphical one later.
 
 I'll start building the application using Java's implementations of the data structures 
 and build the basics of importing the .map to two dimensional array and other practical things.
+
+
+Time used: 5h

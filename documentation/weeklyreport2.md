@@ -13,4 +13,5 @@ I've learned a lot about different heuristics for a star. Also recalled the basi
 
 Implement other algorithms and import the .map file. 
 
+
 Time used: 8h
