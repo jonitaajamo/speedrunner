@@ -10,3 +10,4 @@ search algorithms and compare them.
 ### Weekly reports
 * [Weekly report 1](https://github.com/jonitaajamo/speedrunner/blob/master/documentation/weeklyreport1.md)
 * [Weekly report 2](https://github.com/jonitaajamo/speedrunner/blob/master/documentation/weeklyreport2.md)
+* [Weekly report 3](https://github.com/jonitaajamo/speedrunner/blob/master/documentation/weeklyreport3.md)
