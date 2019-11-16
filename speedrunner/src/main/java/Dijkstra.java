@@ -1,57 +1,64 @@
 import domain.Node;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.PriorityQueue;
+import java.util.*;
 
-public class Astar {
+public class Dijkstra {
     private char[][] map;
+    private int[][] dist;
     private Node start;
     private Node goal;
     private boolean goalFound;
 
     /**
-     * Astar constructor. Calculates the heuristic for start node.
+     * Dijsktra constructor.
      * @param map map of characters that represent the area that can be moved on
      * @param start Node where the search starts
      * @param goal Node what the algorithms tries to find
      */
-    public Astar(char[][] map, Node start, Node goal) {
+    public Dijkstra(char[][] map, Node start, Node goal) {
         this.map = map;
         this.start = start;
         this.goal = goal;
         this.goalFound = false;
-
-        start.calculateHeuristic(goal);
+        this.dist = new int[map.length][map[0].length];
     }
 
     /**
-     * Search method contains the A* algorithm itself.
+     * Search method contains the Dijkstra algorithm itself.
      * Uses java implementations of data structures currently
      */
     public void search() {
+        formatHelperMap();
         PriorityQueue<Node> queue = new PriorityQueue();
         queue.add(start);
 
-        HashSet<Node> visited = new HashSet();
+        Set<Node> visited = new HashSet();
 
         while(!queue.isEmpty()) {
             Node currentNode = queue.poll();
+
+            if(visited.contains(currentNode)) {
+                continue;
+            }
+            visited.add(currentNode);
+
             if(currentNode.equals(this.goal)) {
                 System.out.println("Goal found");
                 this.goalFound = true;
                 break;
             }
+
             List<Node> neighbors = getNeighbors(currentNode);
-            visited.add(currentNode);
-            if(!neighbors.isEmpty()) {
-                for(Node neighbor : neighbors) {
-                    if(!visited.contains(neighbor)) {
-                        queue.add(neighbor);
-                    }
+            for(Node neighbor : neighbors) {
+                int distance = this.dist[neighbor.getX()][neighbor.getY()];
+                int newDist = distance + 1;
+
+                if(newDist < distance) {
+                    this.dist[neighbor.getX()][neighbor.getY()] = newDist;
+                    queue.add(new Node(neighbor.getX(), neighbor.getY(), newDist));
                 }
             }
+
         }
     }
 
@@ -66,41 +73,42 @@ public class Astar {
 
         ArrayList<Node> neighbors = new ArrayList<>();
         if(this.map[x-1][y] == '.') {
-            neighbors.add(new Node(x-1, y, heuristic(x-1, y)));
+            neighbors.add(new Node(x-1, y));
         }
         if(this.map[x+1][y] == '.') {
-            neighbors.add(new Node(x+1,y,heuristic(x+1, y)));
+            neighbors.add(new Node(x+1,y));
         }
         if(this.map[x][y-1] == '.') {
-            neighbors.add(new Node(x,y-1,heuristic(x,y-1)));
+            neighbors.add(new Node(x,y-1));
         }
         if(this.map[x][y+1] == '.') {
-            neighbors.add(new Node(x,y+1, heuristic(x, y+1)));
+            neighbors.add(new Node(x,y+1));
         }
         if(this.map[x+1][y+1] == '.') {
-            neighbors.add(new Node(x+1,y+1, heuristic(x, y+1)));
+            neighbors.add(new Node(x+1,y+1));
         }
         if(this.map[x-1][y+1] == '.') {
-            neighbors.add(new Node(x-1,y+1, heuristic(x, y+1)));
+            neighbors.add(new Node(x-1,y+1));
         }
         if(this.map[x-1][y-1] == '.') {
-            neighbors.add(new Node(x-1,y-1, heuristic(x, y+1)));
+            neighbors.add(new Node(x-1,y-1));
         }
         if(this.map[x+1][y-1] == '.') {
-            neighbors.add(new Node(x+1,y-1, heuristic(x, y+1)));
+            neighbors.add(new Node(x+1,y-1));
         }
 
         return neighbors;
     }
 
     /**
-     * Uses manhattan heuristic to evaluate the distance to goal node.
-     * @param x x value on the position we wan't to evaluate from
-     * @param y y value on the position we wan't to evaluate from
-     * @return returns int evaluation of the distance to the goal
+     * Formats distance map with max int values
      */
-    public int heuristic(int x, int y) {
-        return Math.abs(x - this.goal.getX()) + Math.abs(y - this.goal.getY());
+    public void formatHelperMap() {
+        for(int i = 0; i < this.dist.length; i++) {
+            for(int j = 0; j < this.dist[0].length; j++) {
+                this.dist[i][j] = Integer.MAX_VALUE;
+            }
+        }
     }
 
     public boolean isGoalFound() {
