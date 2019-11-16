@@ -65,7 +65,6 @@ public class Astar {
         int y = node.getY();
 
         ArrayList<Node> neighbors = new ArrayList<>();
-
         if(this.map[x-1][y] == '.') {
             neighbors.add(new Node(x-1, y, heuristic(x-1, y)));
         }
@@ -77,6 +76,18 @@ public class Astar {
         }
         if(this.map[x][y+1] == '.') {
             neighbors.add(new Node(x,y+1, heuristic(x, y+1)));
+        }
+        if(this.map[x+1][y+1] == '.') {
+            neighbors.add(new Node(x+1,y+1, heuristic(x, y+1)));
+        }
+        if(this.map[x-1][y+1] == '.') {
+            neighbors.add(new Node(x-1,y+1, heuristic(x, y+1)));
+        }
+        if(this.map[x-1][y-1] == '.') {
+            neighbors.add(new Node(x-1,y-1, heuristic(x, y+1)));
+        }
+        if(this.map[x+1][y-1] == '.') {
+            neighbors.add(new Node(x+1,y-1, heuristic(x, y+1)));
         }
 
         return neighbors;

@@ -1,23 +1,21 @@
 import domain.Node;
 
-public class Main {
-    public static void main(String args[]) {
-        //only for testing purposes currently
-        char[][] map = new char[10][10];
-        for(int i = 0; i < map.length; i++) {
-            for(int j = 0; j < map[i].length; j++) {
-                if(i == 0 || j == 0 || i == map.length - 1 || j == map[i].length - 1) {
-                    map[i][j] = 'T';
-                    System.out.print("T");
-                }else{
-                    map[i][j] = '.';
-                    System.out.print(".");
-                }
-            }
-            System.out.println();
-        }
+import java.io.IOException;
 
-        Astar astar = new Astar(map, new Node(1, 1), new Node(8, 8));
+public class Main {
+    public static void main(String args[]) throws IOException {
+        //only for testing purposes currently
+        char[][] map = Util.importMap("ca_cave.map");
+
+        Astar astar = new Astar(map, new Node(122, 70), new Node(106, 224));
+        Dijkstra dijkstra = new Dijkstra(map, new Node(122, 70), new Node(106, 224));
+        long aStarStartTime = System.nanoTime();
         astar.search();
+        long aStarTime = System.nanoTime() - aStarStartTime;
+        long dijsktraStartTime = System.nanoTime();
+        dijkstra.search();
+        long dijsktraTime = System.nanoTime() - dijsktraStartTime;
+
+        System.out.println("A* took: " + aStarTime / 1000000 + ", Dijsktra took: " + dijsktraTime / 1000000);
     }
 }
