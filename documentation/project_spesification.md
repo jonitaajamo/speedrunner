@@ -9,7 +9,6 @@ I chose this topic because of my new found love for search algorithms and good a
   * A-star
   * BFS
   * Djisktra
-  * Brute force, if its not too intensive to compute
   
 * Required data structures:
   * Priority queue (multiple possible implementations)
