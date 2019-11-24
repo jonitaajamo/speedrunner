@@ -15,14 +15,25 @@ public class NodeList implements Iterable<Node> {
         this.index = 0;
     }
 
-    public void add(Node object) {
+    /**
+     * Adds new node to the list and checks if this.values has enough space.
+     * @param node
+     */
+    public void add(Node node) {
         if(this.index==this.size-1) {
             increaseSize();
         }
-        values[this.index] = object;
+        values[this.index] = node;
         this.index++;
     }
 
+    /**
+     * Gets node from the list by index
+     *
+     * @param i index where node is searched from
+     * @return Node from the asked index
+     * @throws Exception Throws exception if index is larger than the size of the array
+     */
     public Node get(int i) throws Exception {
         if(i>this.index-1){
             throw new Exception("ArrayIndexOutOfBounds");
@@ -33,6 +44,11 @@ public class NodeList implements Iterable<Node> {
         return this.values[i];
     }
 
+    /**
+     * Removes one node from the list and moves all nodes to fill the emptied index
+     * @param i index where the node is removed from
+     * @throws Exception Throws exception if index is larger than the size of the array
+     */
     public void remove(int i) throws Exception{
         if(i>this.index-1){
             throw new Exception("ArrayIndexOutOfBounds");
@@ -46,6 +62,10 @@ public class NodeList implements Iterable<Node> {
         this.index--;
     }
 
+    /**
+     *
+     * @return the current size of the list
+     */
     public int size() {
         return this.index;
     }
