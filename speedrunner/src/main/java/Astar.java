@@ -1,8 +1,7 @@
+import domain.NodeList;
 import domain.Node;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.PriorityQueue;
 
 public class Astar {
@@ -43,15 +42,14 @@ public class Astar {
                 this.goalFound = true;
                 break;
             }
-            List<Node> neighbors = getNeighbors(currentNode);
+            NodeList neighbors = getNeighbors(currentNode);
             visited.add(currentNode);
-            if(!neighbors.isEmpty()) {
-                for(Node neighbor : neighbors) {
-                    if(!visited.contains(neighbor)) {
-                        queue.add(neighbor);
-                    }
+            for(Node neighbor : neighbors) {
+                if(!visited.contains(neighbor)) {
+                    queue.add(neighbor);
                 }
             }
+
         }
     }
 
@@ -60,11 +58,11 @@ public class Astar {
      * @param node Node whose neighbor's are checked
      * @return List of neighbors
      */
-    public List<Node> getNeighbors(Node node) {
+    public NodeList getNeighbors(Node node) {
         int x = node.getX();
         int y = node.getY();
 
-        ArrayList<Node> neighbors = new ArrayList<>();
+        NodeList neighbors = new NodeList();
         if(this.map[x-1][y] == '.') {
             neighbors.add(new Node(x-1, y, heuristic(x-1, y)));
         }

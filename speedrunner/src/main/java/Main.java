@@ -3,7 +3,7 @@ import domain.Node;
 import java.io.IOException;
 
 public class Main {
-    public static void main(String args[]) throws IOException {
+    public static void main(String[] args) throws IOException {
         //only for testing purposes currently
         char[][] map = Util.importMap("ca_cave.map");
 
@@ -12,10 +12,11 @@ public class Main {
         long aStarStartTime = System.nanoTime();
         astar.search();
         long aStarTime = System.nanoTime() - aStarStartTime;
-        long dijsktraStartTime = System.nanoTime();
+        long dijkstraStartTime = System.nanoTime();
         dijkstra.search();
-        long dijsktraTime = System.nanoTime() - dijsktraStartTime;
+        long dijkstraTime = System.nanoTime() - dijkstraStartTime;
 
-        System.out.println("A* took: " + aStarTime / 1000000 + ", Dijsktra took: " + dijsktraTime / 1000000);
+        System.out.println("A* took: " + aStarTime / 1000000 + ", Dijsktra took: " + dijkstraTime / 1000000);
+
     }
 }

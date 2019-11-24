@@ -1,3 +1,4 @@
+import domain.NodeList;
 import domain.Node;
 
 import java.util.*;
@@ -48,7 +49,7 @@ public class Dijkstra {
                 break;
             }
 
-            List<Node> neighbors = getNeighbors(currentNode);
+            NodeList neighbors = getNeighbors(currentNode);
             for(Node neighbor : neighbors) {
                 int distance = this.dist[neighbor.getX()][neighbor.getY()];
                 int newDist = distance + 1;
@@ -67,11 +68,11 @@ public class Dijkstra {
      * @param node Node whose neighbor's are checked
      * @return List of neighbors
      */
-    public List<Node> getNeighbors(Node node) {
+    public NodeList getNeighbors(Node node) {
         int x = node.getX();
         int y = node.getY();
 
-        ArrayList<Node> neighbors = new ArrayList<>();
+        NodeList neighbors = new NodeList();
         if(this.map[x-1][y] == '.') {
             neighbors.add(new Node(x-1, y));
         }
