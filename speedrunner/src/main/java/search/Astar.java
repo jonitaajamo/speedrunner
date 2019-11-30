@@ -1,3 +1,5 @@
+package search;
+
 import domain.NodeList;
 import domain.Node;
 
@@ -11,7 +13,7 @@ public class Astar {
     private boolean goalFound;
 
     /**
-     * Astar constructor. Calculates the heuristic for start node.
+     * search.Astar constructor. Calculates the heuristic for start node.
      * @param map map of characters that represent the area that can be moved on
      * @param start Node where the search starts
      * @param goal Node what the algorithms tries to find

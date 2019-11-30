@@ -1,3 +1,5 @@
+package search;
+
 import domain.NodeList;
 import domain.Node;
 
@@ -25,7 +27,7 @@ public class Dijkstra {
     }
 
     /**
-     * Search method contains the Dijkstra algorithm itself.
+     * Search method contains the search.Dijkstra algorithm itself.
      * Uses java implementations of data structures currently
      */
     public void search() {

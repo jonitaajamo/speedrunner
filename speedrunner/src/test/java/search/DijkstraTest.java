@@ -1,10 +1,14 @@
+package search;
+
 import domain.Node;
-
 import org.junit.Test;
-import static org.junit.Assert.*;
+import search.Dijkstra;
 
-public class AstarTest {
-    private Astar astar;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+public class DijkstraTest {
+    private Dijkstra dijsktra;
 
     @Test
     public void goalIsFoundFromMap1() {
@@ -16,10 +20,10 @@ public class AstarTest {
                 {'T','.','.','.','.','T'},
                 {'T','T','T','T','T','T'},
         };
-        this.astar = new Astar(map, new Node(1, 1), new Node(4, 3));
-        this.astar.search();
+        this.dijsktra = new Dijkstra(map, new Node(1, 1), new Node(4, 3));
+        this.dijsktra.search();
 
-        assertTrue(this.astar.isGoalFound());
+        assertTrue(this.dijsktra.isGoalFound());
     }
 
     @Test
@@ -33,9 +37,9 @@ public class AstarTest {
                 {'T','T','T','T','T','T'},
         };
 
-        this.astar = new Astar(map, new Node(1, 1), new Node(4, 4));
-        this.astar.search();
+        this.dijsktra = new Dijkstra(map, new Node(1, 1), new Node(4, 4));
+        this.dijsktra.search();
 
-        assertFalse(this.astar.isGoalFound());
+        assertFalse(this.dijsktra.isGoalFound());
     }
 }
