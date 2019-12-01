@@ -14,3 +14,4 @@ search algorithms and compare them.
 * [Weekly report 2](https://github.com/jonitaajamo/speedrunner/blob/master/documentation/weeklyreport2.md)
 * [Weekly report 3](https://github.com/jonitaajamo/speedrunner/blob/master/documentation/weeklyreport3.md)
 * [Weekly report 4](https://github.com/jonitaajamo/speedrunner/blob/master/documentation/weeklyreport4.md)
+* [Weekly report 4](https://github.com/jonitaajamo/speedrunner/blob/master/documentation/weeklyreport5.md)
