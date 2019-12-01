@@ -7,6 +7,7 @@ public class Node implements Comparable<Node>{
     private int y;
     private int heuristic;
     private Node parent;
+    private boolean hasParent;
 
     public Node(int x, int y) {
         this.x = x;
@@ -16,6 +17,12 @@ public class Node implements Comparable<Node>{
     public Node(int x, int y, int heuristic) {
         this(x, y);
         this.heuristic = heuristic;
+    }
+
+    public Node(int x, int y, Node parent) {
+        this(x, y);
+        this.parent = parent;
+        this.hasParent = true;
     }
 
     public void calculateHeuristic(Node goal) {
@@ -28,6 +35,14 @@ public class Node implements Comparable<Node>{
 
     public int getY() {
         return y;
+    }
+
+    public boolean hasParent(){
+        return this.hasParent;
+    }
+
+    public Node getParent() {
+        return parent;
     }
 
     private int getHeuristic() {
@@ -53,4 +68,8 @@ public class Node implements Comparable<Node>{
         return Objects.hash(x, y);
     }
 
+    @Override
+    public String toString() {
+        return "X: " + this.x + ", Y: " + this.y;
+    }
 }

@@ -1,15 +1,13 @@
 package search;
 
 import domain.Node;
-
 import org.junit.Before;
 import org.junit.Test;
-import search.Astar;
 
 import static org.junit.Assert.*;
 
-public class AstarTest {
-    private Astar astar;
+public class BFSTest {
+    private BFS bfs;
     private char[][] map1;
     private char[][] map2;
 
@@ -35,28 +33,27 @@ public class AstarTest {
 
     @Test
     public void goalIsFoundFromMap1() {
-        this.astar = new Astar(this.map1, new Node(1, 1), new Node(4, 3));
-        this.astar.search();
+        this.bfs = new BFS(this.map1, new Node(1, 1), new Node(4, 3));
+        this.bfs.search();
 
-        assertTrue(this.astar.isGoalFound());
+        assertTrue(this.bfs.isGoalFound());
     }
 
     @Test
     public void goalIsNotFoundWhenPathBlocked1() {
+        this.bfs = new BFS(this.map2, new Node(1, 1), new Node(4, 4));
+        this.bfs.search();
 
-        this.astar = new Astar(this.map2, new Node(1, 1), new Node(4, 4));
-        this.astar.search();
-
-        assertFalse(this.astar.isGoalFound());
+        assertFalse(this.bfs.isGoalFound());
     }
 
     @Test
     public void findsCorrectPath(){
-        this.astar = new Astar(this.map1, new Node(1, 1), new Node(4, 3));
-        this.astar.search();
+        this.bfs = new BFS(this.map1, new Node(1, 1), new Node(4, 3));
+        this.bfs.search();
 
         String testPath = "";
-        for(Node node : astar.constructFinalPath()) {
+        for(Node node : bfs.constructFinalPath()) {
             testPath += node.toString() + "; ";
         }
 

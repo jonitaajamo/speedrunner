@@ -10,6 +10,7 @@ public class Astar {
     private char[][] map;
     private Node start;
     private Node goal;
+    private Node finalNode;
     private boolean goalFound;
 
     /**
@@ -42,6 +43,7 @@ public class Astar {
             if(currentNode.equals(this.goal)) {
                 System.out.println("Goal found");
                 this.goalFound = true;
+                this.finalNode = currentNode;
                 break;
             }
             NodeList neighbors = getNeighbors(currentNode);
@@ -65,32 +67,67 @@ public class Astar {
         int y = node.getY();
 
         NodeList neighbors = new NodeList();
-        if(this.map[x-1][y] == '.') {
-            neighbors.add(new Node(x-1, y, heuristic(x-1, y)));
-        }
-        if(this.map[x+1][y] == '.') {
-            neighbors.add(new Node(x+1,y,heuristic(x+1, y)));
-        }
-        if(this.map[x][y-1] == '.') {
-            neighbors.add(new Node(x,y-1,heuristic(x,y-1)));
-        }
-        if(this.map[x][y+1] == '.') {
-            neighbors.add(new Node(x,y+1, heuristic(x, y+1)));
-        }
-        if(this.map[x+1][y+1] == '.') {
-            neighbors.add(new Node(x+1,y+1, heuristic(x, y+1)));
-        }
         if(this.map[x-1][y+1] == '.') {
-            neighbors.add(new Node(x-1,y+1, heuristic(x, y+1)));
+            neighbors.add(new Node(x-1,y+1, node));
+        }
+        if(this.map[x-1][y] == '.') {
+            neighbors.add(new Node(x-1, y, node));
         }
         if(this.map[x-1][y-1] == '.') {
-            neighbors.add(new Node(x-1,y-1, heuristic(x, y+1)));
+            neighbors.add(new Node(x-1,y-1, node));
+        }
+        if(this.map[x][y-1] == '.') {
+            neighbors.add(new Node(x,y-1, node));
         }
         if(this.map[x+1][y-1] == '.') {
-            neighbors.add(new Node(x+1,y-1, heuristic(x, y+1)));
+            neighbors.add(new Node(x+1,y-1, node));
+        }
+        if(this.map[x+1][y] == '.') {
+            neighbors.add(new Node(x+1,y, node));
+        }
+        if(this.map[x+1][y+1] == '.') {
+            neighbors.add(new Node(x+1,y+1, node));
+        }
+        if(this.map[x][y+1] == '.') {
+            neighbors.add(new Node(x,y+1, node));
         }
 
         return neighbors;
+    }
+
+    /**
+     * Backtracks nodes and saves them into NodeList
+     * @return NodeList containing path
+     */
+    public NodeList constructFinalPath() {
+        if(!goalFound) {
+            return null;
+        }
+        NodeList finalPath = new NodeList();
+        Node currentNode = this.finalNode;
+        int length = 0;
+        while(currentNode.hasParent()) {
+            finalPath.add(currentNode);
+            currentNode = currentNode.getParent();
+        }
+        return finalPath;
+    }
+
+    /**
+     * Backtracks nodes and checks the amount of visited nodes
+     * @return path length as integer
+     */
+    public int finalPathLength() {
+        if(!goalFound) {
+            return 0;
+        }
+        Node currentNode = this.finalNode;
+        int length = 0;
+        while(currentNode.hasParent()) {
+            currentNode = currentNode.getParent();
+            length += 1;
+        }
+        return length;
     }
 
     /**

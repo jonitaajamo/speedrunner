@@ -5,6 +5,12 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Util {
+    /**
+     * Imports map from .map format to two dimensional array. Reads map size from the text file.
+     * @param file .map file containing the map
+     * @return char[][] containing the map
+     * @throws IOException Error if accessing the map fails.
+     */
     public static char[][] importMap(String file) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(file));
         int xSize = 0;
