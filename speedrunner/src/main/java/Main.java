@@ -24,8 +24,10 @@ public class Main {
         long BFSTime = (System.nanoTime() - BFSStartTime) / 1000000;
 
 
-        System.out.println("A* took: " + aStarTime + "ms\t\tDijsktra took: " + dijkstraTime + "ms\t\tBFS took: " + BFSTime + "ms");
+        System.out.println("A* took: " + aStarTime + "ms\t\tDijkstra took: " + dijkstraTime + "ms\t\tBFS took: " + BFSTime + "ms");
 
-        System.out.println("A* path length: " + astar.finalPathLength() + "\tDjikstra path length: " + "WIP" + "\tBFS path length: " + bfs.finalPathLength());
+        System.out.println("A* path length: " + astar.finalPathLength() + "\tDijkstra path length: " + "WIP" + "\tBFS path length: " + bfs.finalPathLength());
+
+        System.out.println("A* visited nodes: " + astar.getVisitedNodes() + "\tDijkstra visited nodes: " + "WIP" + "\tBFS visited nodes: " + bfs.getVisitedNodes());
     }
 }

@@ -12,6 +12,8 @@ public class Astar {
     private Node goal;
     private Node finalNode;
     private boolean goalFound;
+    private boolean[][] visited;
+    private int visitedNodes;
 
     /**
      * search.Astar constructor. Calculates the heuristic for start node.
@@ -24,6 +26,8 @@ public class Astar {
         this.start = start;
         this.goal = goal;
         this.goalFound = false;
+        this.visited = new boolean[this.map.length][this.map[0].length];
+        this.visitedNodes = 0;
 
         start.calculateHeuristic(goal);
     }
@@ -36,21 +40,21 @@ public class Astar {
         PriorityQueue<Node> queue = new PriorityQueue();
         queue.add(start);
 
-        HashSet<Node> visited = new HashSet();
-
         while(!queue.isEmpty()) {
             Node currentNode = queue.poll();
             if(currentNode.equals(this.goal)) {
-                System.out.println("Goal found");
+                System.out.println("A* goal found");
                 this.goalFound = true;
                 this.finalNode = currentNode;
                 break;
             }
             NodeList neighbors = getNeighbors(currentNode);
-            visited.add(currentNode);
             for(Node neighbor : neighbors) {
-                if(!visited.contains(neighbor)) {
+                if(!this.visited[neighbor.getX()][neighbor.getY()]) {
+                    neighbor.calculateHeuristic(this.goal);
                     queue.add(neighbor);
+                    this.visited[neighbor.getX()][neighbor.getY()] = true;
+                    this.visitedNodes += 1;
                 }
             }
 
@@ -105,7 +109,6 @@ public class Astar {
         }
         NodeList finalPath = new NodeList();
         Node currentNode = this.finalNode;
-        int length = 0;
         while(currentNode.hasParent()) {
             finalPath.add(currentNode);
             currentNode = currentNode.getParent();
@@ -131,9 +134,20 @@ public class Astar {
     }
 
     /**
+     * Initializes helper map for visited nodes.
+     */
+    public void initializeVisitedMap() {
+        for(int x = 0; x < this.visited.length; x++) {
+            for(int y = 0; y < this.visited[0].length; y++) {
+                this.visited[x][y] = false;
+            }
+        }
+    }
+
+    /**
      * Uses manhattan heuristic to evaluate the distance to goal node.
-     * @param x x value on the position we wan't to evaluate from
-     * @param y y value on the position we wan't to evaluate from
+     * @param x value on the position we wan't to evaluate from
+     * @param y value on the position we wan't to evaluate from
      * @return returns int evaluation of the distance to the goal
      */
     public int heuristic(int x, int y) {
@@ -142,5 +156,9 @@ public class Astar {
 
     public boolean isGoalFound() {
         return this.goalFound;
+    }
+
+    public int getVisitedNodes() {
+        return this.visitedNodes;
     }
 }

@@ -11,6 +11,8 @@ public class BFS {
     private Node goal;
     private boolean goalFound;
     private Node finalNode;
+    private boolean[][] visited;
+    private int visitedNodes;
 
     /**
      * BFS constructor.
@@ -23,6 +25,8 @@ public class BFS {
         this.start = start;
         this.goal = goal;
         this.goalFound = false;
+        this.visited = new boolean[this.map.length][this.map[0].length];
+        this.visitedNodes = 0;
     }
 
     /**
@@ -33,15 +37,11 @@ public class BFS {
         PriorityQueue<Node> queue = new PriorityQueue();
         queue.add(start);
 
-        Set<Node> visited = new HashSet();
-
         while(!queue.isEmpty()) {
             Node currentNode = queue.poll();
 
-            visited.add(currentNode);
-
             if(currentNode.equals(this.goal)) {
-                System.out.println("Goal found");
+                System.out.println("BFS goal found");
                 this.goalFound = true;
                 this.finalNode = currentNode;
                 break;
@@ -49,8 +49,10 @@ public class BFS {
 
             NodeList neighbors = getNeighbors(currentNode);
             for(Node neighbor : neighbors) {
-                if(!visited.contains(neighbor)) {
+                if(!this.visited[neighbor.getX()][neighbor.getY()]) {
                     queue.add(neighbor);
+                    this.visited[neighbor.getX()][neighbor.getY()] = true;
+                    visitedNodes += 1;
                 }
             }
 
@@ -95,6 +97,10 @@ public class BFS {
         return neighbors;
     }
 
+    public int getVisitedNodes() {
+        return visitedNodes;
+    }
+
     /**
      * Backtracks nodes and saves them into NodeList
      * @return NodeList containing path
@@ -105,7 +111,6 @@ public class BFS {
         }
         NodeList finalPath = new NodeList();
         Node currentNode = this.finalNode;
-        int length = 0;
         while(currentNode.hasParent()) {
             finalPath.add(currentNode);
             currentNode = currentNode.getParent();

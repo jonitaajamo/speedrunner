@@ -46,7 +46,7 @@ public class Dijkstra {
             visited.add(currentNode);
 
             if(currentNode.equals(this.goal)) {
-                System.out.println("Goal found");
+                System.out.println("Dijkstra goal found");
                 this.goalFound = true;
                 break;
             }
