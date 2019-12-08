@@ -131,17 +131,6 @@ public class Astar {
     }
 
     /**
-     * Initializes helper map for visited nodes.
-     */
-    public void initializeVisitedMap() {
-        for(int x = 0; x < this.visited.length; x++) {
-            for(int y = 0; y < this.visited[0].length; y++) {
-                this.visited[x][y] = false;
-            }
-        }
-    }
-
-    /**
      * Uses manhattan heuristic to evaluate the distance to goal node.
      * @param x value on the position we wan't to evaluate from
      * @param y value on the position we wan't to evaluate from
