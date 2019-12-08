@@ -54,6 +54,10 @@ public class Node implements Comparable<Node>{
         return this.heuristic - node.heuristic;
     }
 
+    public void setHeuristic(int heuristic) {
+        this.heuristic = heuristic;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -61,6 +65,10 @@ public class Node implements Comparable<Node>{
         Node node = (Node) o;
         return x == node.x &&
                 y == node.y;
+    }
+
+    public void setParent(Node parent) {
+        this.parent = parent;
     }
 
     @Override
