@@ -1,7 +1,7 @@
 package search;
 
 import domain.Node;
-import main.java.search.BFS;
+import search.BFS;
 import org.junit.Before;
 import org.junit.Test;
 

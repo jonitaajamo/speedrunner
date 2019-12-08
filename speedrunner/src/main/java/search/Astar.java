@@ -2,9 +2,7 @@ package search;
 
 import domain.NodeList;
 import domain.Node;
-
-import java.util.HashSet;
-import java.util.PriorityQueue;
+import domain.NodePriorityQueue;
 
 public class Astar {
     private char[][] map;
@@ -37,7 +35,7 @@ public class Astar {
      * Uses java implementations of data structures currently
      */
     public void search() {
-        PriorityQueue<Node> queue = new PriorityQueue<>();
+        NodePriorityQueue queue = new NodePriorityQueue();
         queue.add(start);
 
         while(!queue.isEmpty()) {

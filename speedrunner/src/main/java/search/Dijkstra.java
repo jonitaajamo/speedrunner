@@ -2,8 +2,7 @@ package search;
 
 import domain.NodeList;
 import domain.Node;
-
-import java.util.*;
+import domain.NodePriorityQueue;
 
 public class Dijkstra {
     private char[][] map;
@@ -41,7 +40,7 @@ public class Dijkstra {
      */
     public void search() {
         formatHelperMap();
-        PriorityQueue<Node> queue = new PriorityQueue<>();
+        NodePriorityQueue queue = new NodePriorityQueue();
         queue.add(start);
 
         while(!queue.isEmpty()) {

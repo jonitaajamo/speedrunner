@@ -2,8 +2,8 @@ package search;
 
 import domain.NodeList;
 import domain.Node;
+import domain.NodePriorityQueue;
 
-import java.util.*;
 
 public class BFS {
     private char[][] map;
@@ -34,7 +34,7 @@ public class BFS {
      * Uses java implementations of data structures currently
      */
     public void search() {
-        PriorityQueue<Node> queue = new PriorityQueue<>();
+        NodePriorityQueue queue = new NodePriorityQueue();
         queue.add(start);
 
         while(!queue.isEmpty()) {
