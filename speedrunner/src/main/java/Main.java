@@ -26,8 +26,8 @@ public class Main {
 
         System.out.println("A* took: " + aStarTime + "ms\t\tDijkstra took: " + dijkstraTime + "ms\t\tBFS took: " + BFSTime + "ms");
 
-        System.out.println("A* path length: " + astar.finalPathLength() + "\tDijkstra path length: " + "WIP" + "\tBFS path length: " + bfs.finalPathLength());
+        System.out.println("A* path length: " + astar.finalPathLength() + "\tDijkstra path length: " + dijkstra.finalPathLength() + "\tBFS path length: " + bfs.finalPathLength());
 
-        System.out.println("A* visited nodes: " + astar.getVisitedNodes() + "\tDijkstra visited nodes: " + "WIP" + "\tBFS visited nodes: " + bfs.getVisitedNodes());
+        System.out.println("A* visited nodes: " + astar.getVisitedNodes() + "\tDijkstra visited nodes: " + dijkstra.getVisitedNodes() + "\tBFS visited nodes: " + bfs.getVisitedNodes());
     }
 }

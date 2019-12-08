@@ -34,7 +34,7 @@ public class BFS {
      * Uses java implementations of data structures currently
      */
     public void search() {
-        PriorityQueue<Node> queue = new PriorityQueue();
+        PriorityQueue<Node> queue = new PriorityQueue<>();
         queue.add(start);
 
         while(!queue.isEmpty()) {
@@ -46,13 +46,14 @@ public class BFS {
                 this.finalNode = currentNode;
                 break;
             }
+            visitedNodes += 1;
 
             NodeList neighbors = getNeighbors(currentNode);
             for(Node neighbor : neighbors) {
                 if(!this.visited[neighbor.getX()][neighbor.getY()]) {
                     queue.add(neighbor);
                     this.visited[neighbor.getX()][neighbor.getY()] = true;
-                    visitedNodes += 1;
+
                 }
             }
 

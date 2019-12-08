@@ -37,7 +37,7 @@ public class Astar {
      * Uses java implementations of data structures currently
      */
     public void search() {
-        PriorityQueue<Node> queue = new PriorityQueue();
+        PriorityQueue<Node> queue = new PriorityQueue<>();
         queue.add(start);
 
         while(!queue.isEmpty()) {
@@ -48,16 +48,15 @@ public class Astar {
                 this.finalNode = currentNode;
                 break;
             }
+            this.visitedNodes += 1;
             NodeList neighbors = getNeighbors(currentNode);
             for(Node neighbor : neighbors) {
                 if(!this.visited[neighbor.getX()][neighbor.getY()]) {
                     neighbor.calculateHeuristic(this.goal);
                     queue.add(neighbor);
                     this.visited[neighbor.getX()][neighbor.getY()] = true;
-                    this.visitedNodes += 1;
                 }
             }
-
         }
     }
 
