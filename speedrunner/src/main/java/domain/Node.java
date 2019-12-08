@@ -45,7 +45,7 @@ public class Node implements Comparable<Node>{
         return parent;
     }
 
-    private int getHeuristic() {
+    public int getHeuristic() {
         return this.heuristic;
     }
 
