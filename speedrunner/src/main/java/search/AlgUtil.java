@@ -16,6 +16,9 @@ public class AlgUtil {
 
         NodeList neighbors = new NodeList();
 
+        if(map[y+1][x] == '.') {
+            neighbors.add(new Node(x,y+1, node));
+        }
         if(map[y][x-1] == '.') {
             neighbors.add(new Node(x-1,y, node));
         }
@@ -24,9 +27,6 @@ public class AlgUtil {
         }
         if(map[y][x+1] == '.') {
             neighbors.add(new Node(x+1,y, node));
-        }
-        if(map[y+1][x] == '.') {
-            neighbors.add(new Node(x,y+1, node));
         }
 
 

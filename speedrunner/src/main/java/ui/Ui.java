@@ -102,8 +102,9 @@ public class Ui {
         long totalPath = 0;
         long totalVisited = 0;
         Dijkstra dijkstra = null;
+        char[][] mapCopy = Util.copyMap(this.map);
         for(int i = 0; i < iterations; i++) {
-            dijkstra = new Dijkstra(map, new Node(122, 70), new Node(106, 224));
+            dijkstra = new Dijkstra(mapCopy, new Node(122, 70), new Node(106, 224));
             long startTime = System.nanoTime();
             dijkstra.search();
             totalTime += System.nanoTime() - startTime;
@@ -121,8 +122,9 @@ public class Ui {
         long totalPath = 0;
         long totalVisited = 0;
         BFS bfs = null;
+        char[][] mapCopy = Util.copyMap(this.map);
         for(int i = 0; i < iterations; i++) {
-            bfs = new BFS(map, new Node(122, 70), new Node(106, 224));
+            bfs = new BFS(mapCopy, new Node(122, 70), new Node(106, 224));
             long startTime = System.nanoTime();
             bfs.search();
             totalTime += System.nanoTime() - startTime;
@@ -140,8 +142,9 @@ public class Ui {
         long totalPath = 0;
         long totalVisited = 0;
         Astar astar = null;
+        char[][] mapCopy = Util.copyMap(this.map);
         for(int i = 0; i < iterations; i++) {
-            astar = new Astar(map, new Node(122, 70), new Node(106, 224));
+            astar = new Astar(mapCopy, new Node(122, 70), new Node(106, 224));
             long startTime = System.nanoTime();
             astar.search();
             totalTime += System.nanoTime() - startTime;
@@ -189,7 +192,7 @@ public class Ui {
         NodeList path = astar.constructFinalPath();
 
         try {
-            char[][] mapCopy = this.map;
+            char[][] mapCopy = Util.copyMap(this.map);
             Util.exportMap(Util.writeNodeListToMap(path, mapCopy), "astar");
             return "Succesfully written path to a file astar.map";
         } catch (Exception e) {
@@ -204,7 +207,7 @@ public class Ui {
         bfs.search();
         NodeList path = bfs.constructFinalPath();
         try {
-            char[][] mapCopy = this.map;
+            char[][] mapCopy = Util.copyMap(this.map);
             Util.exportMap(Util.writeNodeListToMap(path, mapCopy), "bfs");
             return "Succesfully written path to a file bfs.map";
         } catch (Exception e) {
@@ -219,7 +222,7 @@ public class Ui {
         dijkstra.search();
         NodeList path = dijkstra.constructFinalPath();
         try {
-            char[][] mapCopy = this.map;
+            char[][] mapCopy = Util.copyMap(this.map);
             Util.exportMap(Util.writeNodeListToMap(path, mapCopy), "dijkstra");
             return "Succesfully written path to a file dijkstra.map";
         } catch (Exception e) {

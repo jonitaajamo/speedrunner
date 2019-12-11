@@ -61,7 +61,7 @@ public class Dijkstra {
             NodeList neighbors = AlgUtil.getNeighbors(currentNode, this.map);
             for(Node neighbor : neighbors) {
                 int distance = this.dist[neighbor.getY()][neighbor.getX()];
-                int newDist = distance + 1;
+                int newDist = this.dist[currentNode.getY()][currentNode.getX()] + 1;
                 if(newDist < distance) {
                     this.dist[neighbor.getY()][neighbor.getX()] = newDist;
                     neighbor.setParent(currentNode);

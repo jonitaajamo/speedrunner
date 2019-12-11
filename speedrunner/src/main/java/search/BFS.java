@@ -39,7 +39,6 @@ public class BFS {
      */
     public void search() {
         NodeQueue queue = new NodeQueue();
-        this.visited[start.getY()][start.getX()] = true;
         queue.enqueue(start);
 
         while(!queue.isEmpty()) {

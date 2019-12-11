@@ -63,4 +63,14 @@ public class Util {
         }
         return map;
     }
+
+    public static char[][] copyMap(char[][] mapToCopy){
+        char[][] copyOfMap = new char[mapToCopy.length - 1][mapToCopy[0].length - 1];
+        for(int y = 0; y < mapToCopy.length - 1; y++) {
+            for(int x = 0; x < mapToCopy[y].length - 1; x++) {
+                copyOfMap[y][x] = mapToCopy[y][x];
+            }
+        }
+        return copyOfMap;
+    }
 }
