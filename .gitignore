@@ -1,6 +1,7 @@
 # Compiled class file
 *.class
-
+#generated maps
+*.map
 # Log file
 *.log
 

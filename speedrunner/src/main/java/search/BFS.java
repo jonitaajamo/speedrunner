@@ -3,6 +3,10 @@ package search;
 import domain.NodeList;
 import domain.Node;
 import domain.NodePriorityQueue;
+import domain.NodeQueue;
+
+import java.util.LinkedList;
+import java.util.Queue;
 
 
 public class BFS {
@@ -34,13 +38,12 @@ public class BFS {
      * Uses java implementations of data structures currently
      */
     public void search() {
-        NodePriorityQueue queue = new NodePriorityQueue();
+        NodeQueue queue = new NodeQueue();
         this.visited[start.getY()][start.getX()] = true;
-        queue.add(start);
+        queue.enqueue(start);
 
         while(!queue.isEmpty()) {
-            Node currentNode = queue.poll();
-
+            Node currentNode = queue.dequeue();
             if(currentNode.equals(this.goal)) {
                 this.goalFound = true;
                 this.finalNode = currentNode;
@@ -53,10 +56,9 @@ public class BFS {
                 if(!this.visited[neighbor.getY()][neighbor.getX()]) {
                     this.visited[neighbor.getY()][neighbor.getX()] = true;
                     neighbor.setParent(currentNode);
-                    queue.add(neighbor);
+                    queue.enqueue(neighbor);
                 }
             }
-
         }
     }
 

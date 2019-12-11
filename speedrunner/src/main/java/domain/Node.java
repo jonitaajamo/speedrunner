@@ -1,6 +1,5 @@
 package domain;
 
-import java.util.Objects;
 
 public class Node implements Comparable<Node>{
     private int x;
@@ -12,6 +11,7 @@ public class Node implements Comparable<Node>{
     public Node(int x, int y) {
         this.x = x;
         this.y = y;
+        this.heuristic = 0;
     }
 
     public Node(int x, int y, int heuristic) {
@@ -23,6 +23,7 @@ public class Node implements Comparable<Node>{
         this(x, y);
         this.parent = parent;
         this.hasParent = true;
+        this.heuristic = 0;
     }
 
     public void calculateHeuristic(Node goal) {
@@ -71,10 +72,6 @@ public class Node implements Comparable<Node>{
         this.parent = parent;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(x, y);
-    }
 
     @Override
     public String toString() {

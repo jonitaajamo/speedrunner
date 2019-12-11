@@ -47,8 +47,7 @@ public class Util {
     }
 
     public static void exportMap(char[][] map, String algorithm) throws IOException {
-        StringBuilder builder = new StringBuilder();
-        FileWriter writer = new FileWriter(algorithm + ".map", true);
+        FileWriter writer = new FileWriter(algorithm + ".map", false);
         for(int y = 0; y < map.length; y++) {
             for(int x = 0; x < map[y].length; x++) {
                 writer.write(map[y][x]);

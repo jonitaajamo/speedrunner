@@ -65,7 +65,7 @@ public class Ui {
 
     private String parseBenchmarkCommands(String input, String iterations) {
         String[] commands = input.split("\\s+");
-        String results = "\tavg. time\t\tavg. path length\t\tavg. node count\n\n";
+        String results = "\tavg. time\t\tavg. node count\t\tavg. path length\n\n";
         String noResults = results;
         int loops = 1;
         long benchmarkStartTime = System.nanoTime();
@@ -91,8 +91,9 @@ public class Ui {
             return "Number of iterations must be greater than 0, try again";
         }
 
-        double benchmarkTime = (double) (System.nanoTime() - benchmarkStartTime) / 1000000000;
-        results += "\nBenchmark took total of " + df.format(benchmarkTime) + " seconds";
+        double benchmarkTimeSeconds = (double) (System.nanoTime() - benchmarkStartTime) / 1000000000;
+        double benchmarkTime = (double) (System.nanoTime() - benchmarkStartTime) / 1000000;
+        results += "\nBenchmark took total of " + df.format(benchmarkTimeSeconds) + " seconds (" + df.format(benchmarkTime) + "ms)";
         return results;
     }
 
@@ -186,8 +187,10 @@ public class Ui {
         Astar astar = new Astar(map, new Node(122, 70), new Node(106, 224));
         astar.search();
         NodeList path = astar.constructFinalPath();
+
         try {
-            Util.exportMap(Util.writeNodeListToMap(path, this.map), "astar");
+            char[][] mapCopy = this.map;
+            Util.exportMap(Util.writeNodeListToMap(path, mapCopy), "astar");
             return "Succesfully written path to a file astar.map";
         } catch (Exception e) {
             e.printStackTrace();
@@ -201,7 +204,8 @@ public class Ui {
         bfs.search();
         NodeList path = bfs.constructFinalPath();
         try {
-            Util.exportMap(Util.writeNodeListToMap(path, this.map), "bfs");
+            char[][] mapCopy = this.map;
+            Util.exportMap(Util.writeNodeListToMap(path, mapCopy), "bfs");
             return "Succesfully written path to a file bfs.map";
         } catch (Exception e) {
             e.printStackTrace();
@@ -215,7 +219,8 @@ public class Ui {
         dijkstra.search();
         NodeList path = dijkstra.constructFinalPath();
         try {
-            Util.exportMap(Util.writeNodeListToMap(path, this.map), "dijkstra");
+            char[][] mapCopy = this.map;
+            Util.exportMap(Util.writeNodeListToMap(path, mapCopy), "dijkstra");
             return "Succesfully written path to a file dijkstra.map";
         } catch (Exception e) {
             e.printStackTrace();
