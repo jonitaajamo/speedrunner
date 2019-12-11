@@ -3,6 +3,7 @@ package search;
 import domain.NodeList;
 import domain.Node;
 import domain.NodePriorityQueue;
+import search.AlgUtil.*;
 
 public class Dijkstra {
     private char[][] map;
@@ -46,68 +47,29 @@ public class Dijkstra {
         while(!queue.isEmpty()) {
             Node currentNode = queue.poll();
 
-            if(this.visited[currentNode.getX()][currentNode.getY()]) {
+            if(this.visited[currentNode.getY()][currentNode.getX()]){
                 continue;
             }
-            this.visited[currentNode.getX()][currentNode.getY()] = true;
+            this.visited[currentNode.getY()][currentNode.getX()] = true;
 
             if(currentNode.equals(this.goal)) {
-                System.out.println("Dijkstra goal found");
                 this.goalFound = true;
                 this.finalNode = currentNode;
                 break;
             }
             this.visitedNodes += 1;
-            NodeList neighbors = getNeighbors(currentNode);
+            NodeList neighbors = AlgUtil.getNeighbors(currentNode, this.map);
             for(Node neighbor : neighbors) {
-                int distance = this.dist[neighbor.getX()][neighbor.getY()];
+                int distance = this.dist[neighbor.getY()][neighbor.getX()];
                 int newDist = distance + 1;
                 if(newDist < distance) {
-                    this.dist[neighbor.getX()][neighbor.getY()] = newDist;
+                    this.dist[neighbor.getY()][neighbor.getX()] = newDist;
                     neighbor.setParent(currentNode);
                     neighbor.setHeuristic(newDist);
                     queue.add(neighbor);
                 }
             }
         }
-    }
-
-    /**
-     * Finds node's neighbors and checks if they can be moved on.
-     * @param node Node whose neighbor's are checked
-     * @return List of neighbors
-     */
-    public NodeList getNeighbors(Node node) {
-        int x = node.getX();
-        int y = node.getY();
-
-        NodeList neighbors = new NodeList();
-        if(this.map[x-1][y+1] == '.') {
-            neighbors.add(new Node(x-1,y+1));
-        }
-        if(this.map[x-1][y] == '.') {
-            neighbors.add(new Node(x-1, y));
-        }
-        if(this.map[x-1][y-1] == '.') {
-            neighbors.add(new Node(x-1,y-1));
-        }
-        if(this.map[x][y-1] == '.') {
-            neighbors.add(new Node(x,y-1));
-        }
-        if(this.map[x+1][y-1] == '.') {
-            neighbors.add(new Node(x+1,y-1));
-        }
-        if(this.map[x+1][y] == '.') {
-            neighbors.add(new Node(x+1,y));
-        }
-        if(this.map[x+1][y+1] == '.') {
-            neighbors.add(new Node(x+1,y+1));
-        }
-        if(this.map[x][y+1] == '.') {
-            neighbors.add(new Node(x,y+1));
-        }
-
-        return neighbors;
     }
 
     /**

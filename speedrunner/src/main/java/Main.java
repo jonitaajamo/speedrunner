@@ -2,13 +2,15 @@ import domain.Node;
 import search.Astar;
 import search.BFS;
 import search.Dijkstra;
+import ui.Ui;
 import util.Util;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        char[][] map = Util.importMap("ca_cave.map");
+        /*char[][] map = Util.importMap("ca_cave.map");
 
         Astar astar = new Astar(map, new Node(122, 70), new Node(106, 224));
         Dijkstra dijkstra = new Dijkstra(map, new Node(122, 70), new Node(106, 224));
@@ -28,6 +30,10 @@ public class Main {
 
         System.out.println("A* path length: " + astar.finalPathLength() + "\tDijkstra path length: " + dijkstra.finalPathLength() + "\tBFS path length: " + bfs.finalPathLength());
 
-        System.out.println("A* visited nodes: " + astar.getVisitedNodes() + "\tDijkstra visited nodes: " + dijkstra.getVisitedNodes() + "\tBFS visited nodes: " + bfs.getVisitedNodes());
+        System.out.println("A* visited nodes: " + astar.getVisitedNodes() + "\tDijkstra visited nodes: " + dijkstra.getVisitedNodes() + "\tBFS visited nodes: " + bfs.getVisitedNodes())
+         */
+        Scanner scanner = new Scanner(System.in);
+        Ui ui = new Ui(scanner);
+        ui.start();
     }
 }

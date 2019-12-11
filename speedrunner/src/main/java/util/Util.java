@@ -1,7 +1,11 @@
 package util;
 
+import domain.Node;
+import domain.NodeList;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class Util {
@@ -29,16 +33,35 @@ public class Util {
             }
         }
 
-        map = new char[xSize][ySize];
+        map = new char[ySize][xSize];
         char[] points;
 
         for(int y = 0; y < ySize - 1; y++) {
             points = br.readLine().toCharArray();
             for(int x = 0; x < xSize - 1; x++) {
-                map[x][y] = points[x];
+                map[y][x] = points[x];
             }
         }
 
+        return map;
+    }
+
+    public static void exportMap(char[][] map, String algorithm) throws IOException {
+        StringBuilder builder = new StringBuilder();
+        FileWriter writer = new FileWriter(algorithm + ".map", true);
+        for(int y = 0; y < map.length; y++) {
+            for(int x = 0; x < map[y].length; x++) {
+                writer.write(map[y][x]);
+            }
+            writer.write("\r\n");
+        }
+        writer.close();
+    }
+
+    public static char[][] writeNodeListToMap(NodeList nodes, char[][] map) {
+        for(Node node : nodes) {
+            map[node.getY()][node.getX()] = 'X';
+        }
         return map;
     }
 }

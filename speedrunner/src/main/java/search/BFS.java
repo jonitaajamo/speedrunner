@@ -35,67 +35,29 @@ public class BFS {
      */
     public void search() {
         NodePriorityQueue queue = new NodePriorityQueue();
+        this.visited[start.getY()][start.getX()] = true;
         queue.add(start);
 
         while(!queue.isEmpty()) {
             Node currentNode = queue.poll();
 
             if(currentNode.equals(this.goal)) {
-                System.out.println("BFS goal found");
                 this.goalFound = true;
                 this.finalNode = currentNode;
                 break;
             }
             visitedNodes += 1;
 
-            NodeList neighbors = getNeighbors(currentNode);
+            NodeList neighbors = AlgUtil.getNeighbors(currentNode, this.map);
             for(Node neighbor : neighbors) {
-                if(!this.visited[neighbor.getX()][neighbor.getY()]) {
+                if(!this.visited[neighbor.getY()][neighbor.getX()]) {
+                    this.visited[neighbor.getY()][neighbor.getX()] = true;
+                    neighbor.setParent(currentNode);
                     queue.add(neighbor);
-                    this.visited[neighbor.getX()][neighbor.getY()] = true;
-
                 }
             }
 
         }
-    }
-
-    /**
-     * Finds node's neighbors and checks if they can be moved on.
-     * @param node Node whose neighbor's are checked
-     * @return List of neighbors
-     */
-    public NodeList getNeighbors(Node node) {
-        int x = node.getX();
-        int y = node.getY();
-
-        NodeList neighbors = new NodeList();
-        if(this.map[x-1][y+1] == '.') {
-            neighbors.add(new Node(x-1,y+1, node));
-        }
-        if(this.map[x-1][y] == '.') {
-            neighbors.add(new Node(x-1, y, node));
-        }
-        if(this.map[x-1][y-1] == '.') {
-            neighbors.add(new Node(x-1,y-1, node));
-        }
-        if(this.map[x][y-1] == '.') {
-            neighbors.add(new Node(x,y-1, node));
-        }
-        if(this.map[x+1][y-1] == '.') {
-            neighbors.add(new Node(x+1,y-1, node));
-        }
-        if(this.map[x+1][y] == '.') {
-            neighbors.add(new Node(x+1,y, node));
-        }
-        if(this.map[x+1][y+1] == '.') {
-            neighbors.add(new Node(x+1,y+1, node));
-        }
-        if(this.map[x][y+1] == '.') {
-            neighbors.add(new Node(x,y+1, node));
-        }
-
-        return neighbors;
     }
 
     public int getVisitedNodes() {
