@@ -45,14 +45,14 @@ Includes simple CLI ui. Usage is described in [instructions](https://github.com/
 
 ## Benchmarking
 
-Information about benchmarking is in (test documentation)[https://github.com/jonitaajamo/speedrunner/blob/master/documentation/testdocumentation.md]
+Information about benchmarking is in [test documentation](https://github.com/jonitaajamo/speedrunner/blob/master/documentation/testdocumentation.md)
 ## Sources
 
-* (Array)[https://en.wikipedia.org/wiki/Array_data_structure]
-* (Queue)[https://en.wikipedia.org/wiki/Queue_(abstract_data_type)]
-* (PriorityQueue)[https://en.wikipedia.org/wiki/Priority_queue]
-* (Astar)[https://en.wikipedia.org/wiki/A*_search_algorithm]
-* (BFS)[https://en.wikipedia.org/wiki/Breadth-first_search]
-* (Dijkstra)[https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm]
+* [Array](https://en.wikipedia.org/wiki/Array_data_structure)
+* [Queue](https://en.wikipedia.org/wiki/Queue_(abstract_data_type))
+* [PriorityQueue](https://en.wikipedia.org/wiki/Priority_queue)
+* [Astar](https://en.wikipedia.org/wiki/A*_search_algorithm)
+* [BFS](https://en.wikipedia.org/wiki/Breadth-first_search)
+* [Dijkstra](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm)
 
 
