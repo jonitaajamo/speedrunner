@@ -108,6 +108,11 @@ public class Ui {
         return results;
     }
 
+    /**
+     * Benchmarks dijkstra on selected map, selected number of iterations
+     * @param iterations Number of iterations
+     * @return String formatted results of benchmark
+     */
     private String benchmarkDijkstra(int iterations) {
         long totalTime = 0;
         long totalPath = 0;
@@ -128,6 +133,11 @@ public class Ui {
         return "Dijk.\t" + df.format(aStarTime) + " ms \t\t" + averageVisited + "\t\t\t\t" + averagePath + "\n\n";
     }
 
+    /**
+     * Benchmarks bfs on selected map, selected number of iterations
+     * @param iterations Number of iterations
+     * @return String formatted results of benchmark
+     */
     private String benchmarkBFS(int iterations) {
         long totalTime = 0;
         long totalPath = 0;
@@ -148,6 +158,11 @@ public class Ui {
         return "BFS \t" + df.format(aStarTime) + " ms \t\t" + averageVisited + "\t\t\t\t" + averagePath + "\n\n";
     }
 
+    /**
+     * Benchmarks A* on selected map, selected number of iterations
+     * @param iterations Number of iterations
+     * @return String formatted results of benchmark
+     */
     private String benchmarkAstar(int iterations) {
         long totalTime = 0;
         long totalPath = 0;
@@ -168,6 +183,9 @@ public class Ui {
         return "Astar\t" + df.format(aStarTime) + " ms \t\t" + averageVisited + "\t\t\t\t" + averagePath + "\n\n";
     }
 
+    /**
+     * UI method to run pathfinding with selected algorithm. Calls command parsing method with collected input.
+     */
     private void pathFinding() {
         System.out.println();
         System.out.println("Select algorithm for finding the path");
@@ -180,6 +198,12 @@ public class Ui {
         System.out.println(parsePathFindingCommands(input));
     }
 
+    /**
+     * Takes algorithm used for pathfinding as input and calls the correct algorithm.
+     * Returns results of the algorithm or failed parsing.
+     * @param input Selected algorithm as string
+     * @return String formatted results of pathfinding or failed parsing.
+     */
     private String parsePathFindingCommands(String input) {
         String[] commands = input.split("\\s+");
         String result = "";
@@ -197,6 +221,10 @@ public class Ui {
         return "\n"+ result;
     }
 
+    /**
+     * Finds path with A* and writes the results into .map file.
+     * @return String of succesful pathfinding or error.
+     */
     private String findAstarPath() {
         Astar astar = new Astar(map, new Node(122, 70), new Node(106, 224));
         astar.search();
@@ -212,7 +240,10 @@ public class Ui {
 
         return "Something went wrong when writing path to a file.";
     }
-
+    /**
+     * Finds path with BFS and writes the results into .map file.
+     * @return String of succesful pathfinding or error.
+     */
     private String findBFSPath() {
         BFS bfs = new BFS(map, new Node(122, 70), new Node(106, 224));
         bfs.search();
@@ -228,6 +259,10 @@ public class Ui {
         return "Something went wrong when writing path to a file.";
     }
 
+    /**
+     * Finds path with Dijkstra and writes the results into .map file.
+     * @return String of succesful pathfinding or error.
+     */
     private String findDijkstraPath() {
         Dijkstra dijkstra = new Dijkstra(map, new Node(122, 70), new Node(106, 224));
         dijkstra.search();

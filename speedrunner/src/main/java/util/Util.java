@@ -3,10 +3,7 @@ package util;
 import domain.Node;
 import domain.NodeList;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class Util {
     /**
@@ -16,7 +13,8 @@ public class Util {
      * @throws IOException Error if accessing the map fails.
      */
     public static char[][] importMap(String file) throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader(file));
+        InputStream inputStream = Util.class.getResourceAsStream("/" + file);
+        BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
         int xSize = 0;
         int ySize = 0;
         String line;
@@ -46,6 +44,12 @@ public class Util {
         return map;
     }
 
+    /**
+     * Exports map in to .map file two dimensional char array.
+     * @param map Map to be exported
+     * @param algorithm Algorithm name for naming the file
+     * @throws IOException Thrown error, if error occurs during IO access
+     */
     public static void exportMap(char[][] map, String algorithm) throws IOException {
         FileWriter writer = new FileWriter(algorithm + ".map", false);
         for(int y = 0; y < map.length; y++) {
@@ -57,6 +61,12 @@ public class Util {
         writer.close();
     }
 
+    /**
+     * Takes node list as input and marks included nodes with 'X' on given map.
+     * @param nodes List of nodes to be written on a map
+     * @param map Map where the nodes will be marked
+     * @return Returns the map with markings.
+     */
     public static char[][] writeNodeListToMap(NodeList nodes, char[][] map) {
         for(Node node : nodes) {
             map[node.getY()][node.getX()] = 'X';
@@ -64,6 +74,11 @@ public class Util {
         return map;
     }
 
+    /**
+     * Manual two dimensinal array copy, without manipulating the old map.
+     * @param mapToCopy Map to be copied
+     * @return Return the new map.
+     */
     public static char[][] copyMap(char[][] mapToCopy){
         char[][] copyOfMap = new char[mapToCopy.length - 1][mapToCopy[0].length - 1];
         for(int y = 0; y < mapToCopy.length - 1; y++) {

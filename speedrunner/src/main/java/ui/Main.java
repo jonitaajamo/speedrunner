@@ -1,3 +1,5 @@
+package ui;
+
 import ui.Ui;
 
 import java.io.IOException;

@@ -14,6 +14,10 @@ public class NodeQueue {
         this.size = 11;
     }
 
+    /**
+     * Enqueues new node into the queue.
+     * @param node Node to be enqueued
+     */
     public void enqueue(Node node) {
         if (isFull()) {
             increaseSize();
@@ -26,6 +30,9 @@ public class NodeQueue {
         }
     }
 
+    /**
+     * Doubles the current queue size, if gets full. Is called during enqueue operation.
+     */
     private void increaseSize() {
         Node[] newValues = new Node[size * 2];
         int newTail = 0;
@@ -39,16 +46,29 @@ public class NodeQueue {
         size *= 2;
     }
 
-    private int next(int i) {
-        return (i + 1) % size;
+    /**
+     * Selects next head position.
+     * @param index Current index
+     * @return new head position.
+     */
+    private int next(int index) {
+        return (index + 1) % size;
     }
 
+    /**
+     * Takes the first node from queue and changes head's position.
+     * @return Node taken from queue
+     */
     public Node dequeue() {
         Node removable = values[head];
         head = next(head);
         return removable;
     }
 
+    /**
+     * Checks if queue is full.
+     * @return true, if queue is full
+     */
     public boolean isFull() {
         int tailnext = tail + 1;
         if (tailnext == size) {
