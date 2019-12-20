@@ -2,6 +2,8 @@
 
 Project is tested using Junit tests. Test coverage is reported using Jacoco coverage reports and code style is tested with checkstyle. 
 
+Unit tests can be run using scripts described in [instructions](https://github.com/jonitaajamo/speedrunner/blob/master/documentation/instructions.md).
+
 ### Test cases
 Currently tests are implemented for Astar, Dijkstra and NodeList.
 
@@ -25,6 +27,8 @@ Junit tests can be run using command ```gradle test``` from java project root (s
 
 Programs benchmark test test average time to find the route, average node count and average path length.
 Included benchmark were ran with Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz processor.
+
+Benchmarks can be ran using the jar provided in releases.
 
 ### Time
 
