@@ -16,21 +16,3 @@ search algorithms and compare them.
 * [Weekly report 4](https://github.com/jonitaajamo/speedrunner/blob/master/documentation/weeklyreport4.md)
 * [Weekly report 5](https://github.com/jonitaajamo/speedrunner/blob/master/documentation/weeklyreport5.md)
 * [Weekly report 6](https://github.com/jonitaajamo/speedrunner/blob/master/documentation/weeklyreport6.md)
-
-## Instructions
-
-Project uses Gradle as its build system. 
-
-### Testing
-
-Tests can be run using command ```gradle test```
-
-Test coverage report can be generated using ```gradle test jacocoTestReport```
-
-### Javadoc
-
-JavaDoc can be generated using ```gradle javadoc```
-
-### Checkstyle
-
-Code style can be checked using ```gradle checkstyleMain```
