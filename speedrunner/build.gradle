@@ -59,4 +59,5 @@ jar {
     manifest {
         attributes 'Main-Class': 'ui.Main'
     }
+    archiveName 'speerunner.jar'
 }
