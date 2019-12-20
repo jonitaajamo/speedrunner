@@ -46,6 +46,11 @@ Includes simple CLI ui. Usage is described in [instructions](https://github.com/
 ## Benchmarking
 
 Information about benchmarking is in [test documentation](https://github.com/jonitaajamo/speedrunner/blob/master/documentation/testdocumentation.md)
+
+## Suggestions for improvements
+
+GUI would make user experience better. Testing on multiple maps and randomizing start point on each iteration would provide more interesting results. Making all data structures accept any object would be better. Implementing multiple heuristics for Astar would provide better results. 
+
 ## Sources
 
 * [Array](https://en.wikipedia.org/wiki/Array_data_structure)
