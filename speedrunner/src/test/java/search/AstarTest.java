@@ -60,6 +60,6 @@ public class AstarTest {
             testPath += node.toString() + "; ";
         }
 
-        assertEquals("X: 4, Y: 3; X: 4, Y: 2; X: 3, Y: 1; X: 2, Y: 1; ", testPath);
+        assertEquals("X: 4, Y: 3; X: 4, Y: 4; X: 3, Y: 4; X: 2, Y: 4; X: 1, Y: 4; X: 1, Y: 3; X: 1, Y: 2; ", testPath);
     }
 }

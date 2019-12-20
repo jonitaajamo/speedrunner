@@ -60,4 +60,8 @@ public class NodeQueue {
     public boolean isEmpty() {
         return head == tail;
     }
+
+    public int size() {
+        return head + 1;
+    }
 }

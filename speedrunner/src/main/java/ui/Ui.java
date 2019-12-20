@@ -22,6 +22,9 @@ public class Ui {
         this.df = new DecimalFormat("#.####");
     }
 
+    /**
+     * starts running cli
+     */
     public void start() {
         System.out.println("Speedrunner");
         String input = "";
@@ -47,7 +50,9 @@ public class Ui {
         System.out.println("Bye.");
     }
 
-
+    /**
+     * Asks which algorithms to benchmark and calls required functions
+     */
     private void benchmark() {
         System.out.println();
         System.out.println("Algorithms (separate multiple selections by space)");
@@ -63,6 +68,12 @@ public class Ui {
         System.out.println(parseBenchmarkCommands(algorithms, iterations));
     }
 
+    /**
+     * Takes list of algorithms as string input, parses the text and runs the benchmarks
+     * @param input String list of algorithms, separated by spaces.
+     * @param iterations How many iterations each algorithm needs to run
+     * @return Return results of benchmarking as formatted string
+     */
     private String parseBenchmarkCommands(String input, String iterations) {
         String[] commands = input.split("\\s+");
         String results = "\tavg. time\t\tavg. node count\t\tavg. path length\n\n";
@@ -232,4 +243,3 @@ public class Ui {
         return "Something went wrong when writing path to a file.";
     }
 }
-
