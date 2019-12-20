@@ -29,6 +29,7 @@ public class Dijkstra {
         this.dist = new int[map.length][map[0].length];
         this.visited = new boolean[this.map.length][this.map[0].length];
         this.visitedNodes = 0;
+        this.finalNode = null;
     }
 
     public int getVisitedNodes() {

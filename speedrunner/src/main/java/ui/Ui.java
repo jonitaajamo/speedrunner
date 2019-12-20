@@ -29,7 +29,7 @@ public class Ui {
             System.out.println("Select mode:");
             System.out.println("1 Benchmark");
             System.out.println("2 Path finding");
-            System.out.println("q exit");
+            System.out.println("q Exit");
             System.out.print("Command: ");
             input = reader.nextLine();
             if(input.toLowerCase().matches("1|benchmark")) {

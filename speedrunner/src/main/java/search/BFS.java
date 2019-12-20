@@ -31,6 +31,7 @@ public class BFS {
         this.goalFound = false;
         this.visited = new boolean[this.map.length][this.map[0].length];
         this.visitedNodes = 0;
+        this.finalNode = null;
     }
 
     /**
