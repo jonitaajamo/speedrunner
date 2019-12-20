@@ -31,7 +31,7 @@ Three own data structures has been implemented to accept 'Node'-objects.
 | Time complexity (add)   | O(1)                   | O(1)         |
 | Time complexity (remove)| O(1)                   | O(1)         |
 
-* Queue
+* Array
 
 |                         |  Avg. case             | Worst case   |
 | ----------------------- | ---------------------  | ------------ |
