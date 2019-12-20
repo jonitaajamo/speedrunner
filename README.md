@@ -8,6 +8,7 @@ search algorithms and compare them.
 * [Project spesification](https://github.com/jonitaajamo/speedrunner/blob/master/documentation/project_spesification.md)
 * [Implementation document](https://github.com/jonitaajamo/speedrunner/blob/master/documentation/implementationdocument.md)
 * [Testing document](https://github.com/jonitaajamo/speedrunner/blob/master/documentation/testdocumentation.md)
+* [Instructions](https://github.com/jonitaajamo/speedrunner/blob/master/documentation/instructions.md)
 
 ### Weekly reports
 * [Weekly report 1](https://github.com/jonitaajamo/speedrunner/blob/master/documentation/weeklyreport1.md)
