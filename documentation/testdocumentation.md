@@ -48,7 +48,7 @@ Node count was unaffected when running multiple iterations.
  | BFS                 | 4914                  | 
  
  ### Path length
- Path length was unaffextes when running multiple iterations.
+ Path length was unaffected when running multiple iterations.
  
  | Algorithm           |Path length on test map| 
  | ------------------- | ----------------------|  
