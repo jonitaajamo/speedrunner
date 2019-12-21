@@ -12,7 +12,7 @@ Includes simple CLI ui. Usage is described in [instructions](https://github.com/
 ## Time and space complexities
 
 
-### Tietorakenteet
+### Data structures
 Three own data structures has been implemented to accept 'Node'-objects. 
 
 * PriorityQueue using binary heap.
