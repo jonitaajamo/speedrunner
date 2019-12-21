@@ -6,7 +6,7 @@
 
 Project uses Gradle as its build system. 
 
-Application has been created with [Oraclen JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). 
+Application has been created with [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). 
 You can download `speedrunner.jar` from [GitHub-releases](https://github.com/jonitaajamo/speedrunner/releases).
 Navigate to directory where you've downloaded the file and run command `java -jar speedrunner.jar`.
 
